@@ -1,0 +1,16 @@
+node_modules/
+.venv/
+.next/
+coverage/
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+artifacts/
+deployments/private/
+work/
+work-compass.pdf
+work-compass-page.png
+*.log
+*.tsbuildinfo
