@@ -19,7 +19,7 @@ Handback deliberately provides no unilateral admin override, proxy upgrade, hidd
 - Deployment transaction: [`0x0889…115f`](https://genlayer-explorer.vercel.app/transactions/0x0889d7eda4d33349ab3103919641dc9bbc1e258970837a1515682ce551a5115f)
 - Frontend: `https://handback-milestones.vercel.app`
 
-The Vercel project currently has account-level deployment protection enabled. The owner must disable Vercel Authentication before the frontend URL is public; the deployment itself is ready and configured with the contract above.
+The production frontend is public and configured with the contract above.
 
 ## Run locally
 
