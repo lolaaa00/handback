@@ -17,7 +17,7 @@
     "contract:lint": ".venv/bin/genvm-lint check contracts/handback.py",
     "contract:test": ".venv/bin/pytest tests/direct -v",
     "network:check": "node scripts/check-network.mjs",
-    "verify": "npm run network:check && npm run typecheck && npm test && npm run build"
+    "verify": "npm run network:check && npm run typecheck && npm run lint && npm test && npm run contract:test && npm run build"
   },
   "dependencies": {
     "genlayer-js": "1.1.8",

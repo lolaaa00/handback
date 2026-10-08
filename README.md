@@ -13,6 +13,10 @@ Handback is a Studionet-native milestone escrow for digital work. A client write
 
 Handback deliberately provides no unilateral admin override, proxy upgrade, hidden signer, or private moderation service.
 
+## Why GenLayer matters
+
+Whether digital work materially satisfies a written requirement is not a formatting check: reasonable reviewers can disagree after reading the same public evidence. Handback makes that substantive judgment through GenLayer validators, which independently retrieve the bound sources and recompute the criterion-level result. A single Handback server cannot approve its preferred party or redirect escrow. Consensus changes the contract into payable, cure-required, or evidence-repair state; deterministic contract rules then control settlement.
+
 ## Live deployment
 
 - Contract: [`0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f`](https://genlayer-explorer.vercel.app/address/0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f)
@@ -23,10 +27,12 @@ The production frontend is public and configured with the contract above.
 
 ## Run locally
 
-Requirements: Node.js 20+, Python 3.12+, and an injected wallet such as MetaMask.
+Requirements: Node.js 20+, Python 3.12+, and an injected wallet such as MetaMask or Rabby.
 
 ```bash
 npm ci
+python3.12 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 cp .env.example .env.local
 npm run dev
 ```
@@ -45,7 +51,7 @@ npm run contract:lint
 npm run build
 ```
 
-The contract tests use GenLayer Direct mode with mocked web and LLM behavior. They cover party authorization, evidence completeness, consensus disagreement, cure and repair outcomes, duplicate/replay resistance, expiry, mutual cancellation, and single-use settlement.
+`npm run verify` runs the network guard, TypeScript, ESLint, frontend tests, Direct Mode contract tests, and production build. The contract tests use mocked web and LLM behavior inside GenLayer Direct mode. They cover party authorization, evidence completeness, consensus disagreement, cure and repair outcomes, duplicate/replay resistance, expiry, mutual cancellation, and single-use settlement.
 
 ## Architecture
 
@@ -58,5 +64,14 @@ The contract tests use GenLayer Direct mode with mocked web and LLM behavior. Th
 
 Studionet is the only configured network: chain `61999`, RPC `https://studio.genlayer.com/api`.
 
+Core versions: Next.js `16.4.0`, React `19.1.1`, `genlayer-js` `1.1.8`, repository-local GenLayer CLI `0.39.1`, `genlayer-test` `0.29.2`, and `genvm-linter` `0.11.0`.
+
 See [deployment](docs/DEPLOYMENT.md) and [security](docs/SECURITY.md) for operational details.
 The exact on-chain verification record is in [live lifecycle evidence](docs/LIVE_EVIDENCE.md).
+
+## Limitations
+
+- Handback is experimental Studionet software and has not received an independent security audit.
+- Agreement terms and evidence are public; users must not include secrets or private personal information.
+- Validator web access and model availability can delay judgment. Unavailable or oversized evidence enters repair instead of moving funds.
+- Public sources can change after submission unless the worker supplies an immutable version and matching response digest.
