@@ -3,7 +3,7 @@ export const NETWORK = {
   chainId: 61999,
   chainHex: "0xf22f",
   rpc: "https://studio.genlayer.com/api",
-  explorer: "https://explorer-studio.genlayer.com",
+  explorer: "https://genlayer-explorer.vercel.app",
   currency: { name: "GEN", symbol: "GEN", decimals: 18 },
 } as const;
 
@@ -17,4 +17,3 @@ export function explorerTransaction(hash: string) {
 export function explorerAddress(address: string) {
   return `${NETWORK.explorer}/address/${address}`;
 }
-

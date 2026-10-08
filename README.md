@@ -13,6 +13,14 @@ Handback is a Studionet-native milestone escrow for digital work. A client write
 
 Handback deliberately provides no unilateral admin override, proxy upgrade, hidden signer, or private moderation service.
 
+## Live deployment
+
+- Contract: [`0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f`](https://genlayer-explorer.vercel.app/address/0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f)
+- Deployment transaction: [`0x0889…115f`](https://genlayer-explorer.vercel.app/transactions/0x0889d7eda4d33349ab3103919641dc9bbc1e258970837a1515682ce551a5115f)
+- Frontend: `https://handback-milestones.vercel.app`
+
+The Vercel project currently has account-level deployment protection enabled. The owner must disable Vercel Authentication before the frontend URL is public; the deployment itself is ready and configured with the contract above.
+
 ## Run locally
 
 Requirements: Node.js 20+, Python 3.12+, and an injected wallet such as MetaMask.
@@ -51,3 +59,4 @@ The contract tests use GenLayer Direct mode with mocked web and LLM behavior. Th
 Studionet is the only configured network: chain `61999`, RPC `https://studio.genlayer.com/api`.
 
 See [deployment](docs/DEPLOYMENT.md) and [security](docs/SECURITY.md) for operational details.
+The exact on-chain verification record is in [live lifecycle evidence](docs/LIVE_EVIDENCE.md).

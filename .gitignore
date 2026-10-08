@@ -8,9 +8,9 @@ coverage/
 __pycache__/
 .pytest_cache/
 artifacts/
+deploy/
 deployments/private/
 work/
-work-compass.pdf
-work-compass-page.png
 *.log
 *.tsbuildinfo
+.vercel
