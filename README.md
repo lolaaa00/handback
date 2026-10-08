@@ -27,7 +27,7 @@ The production frontend is public and configured with the contract above.
 
 ## Run locally
 
-Requirements: Node.js 20+, Python 3.12+, and an injected wallet such as MetaMask or Rabby.
+Requirements: Node.js 24, Python 3.12+, and an injected wallet such as MetaMask or Rabby.
 
 ```bash
 npm ci
