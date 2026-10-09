@@ -20,7 +20,7 @@ Whether digital work materially satisfies a written requirement is not a formatt
 
 ## Live deployment
 
-- Contract: [`0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79`](https://genlayer-explorer.vercel.app/address/0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79)
+- Contract: [`0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79`](https://studio.genlayer.com/?import-contract=0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79)
 - Deployment transaction: [`0xd9de…b35e`](https://genlayer-explorer.vercel.app/transactions/0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e)
 - Frontend: `https://handback-milestones.vercel.app`
 

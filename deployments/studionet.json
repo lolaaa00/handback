@@ -2,7 +2,7 @@
   "contract": "Handback",
   "address": "0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79",
   "transaction": "0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e",
-  "contractExplorer": "https://genlayer-explorer.vercel.app/address/0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79",
+  "contractStudio": "https://studio.genlayer.com/?import-contract=0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79",
   "transactionExplorer": "https://genlayer-explorer.vercel.app/transactions/0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e",
   "deployer": "0x7099f2f0d13a9e0c208a9e140f681334cc3d6b89",
   "network": "studionet",

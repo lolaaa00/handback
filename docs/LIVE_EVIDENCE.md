@@ -4,7 +4,7 @@ All entries below are real finalized Studionet activity on chain `61999`, execut
 
 ## Current deployment
 
-- Handback: [`0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79`](https://genlayer-explorer.vercel.app/address/0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79)
+- Handback: [`0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79`](https://studio.genlayer.com/?import-contract=0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79)
 - Deployment: [`0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e`](https://genlayer-explorer.vercel.app/transactions/0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e)
 - Source commit: `2b2f970`
 - Final result: `FINALIZED`, `MAJORITY_AGREE`, five validator votes agreeing
