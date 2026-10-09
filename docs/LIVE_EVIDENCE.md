@@ -1,12 +1,25 @@
 # Live Studionet evidence
 
-All entries below are real finalized Studionet activity on chain `61999`. The contract source was deployed from commit `cf738e2` with repository-local GenLayer CLI `0.39.1`.
+All entries below are real finalized Studionet activity on chain `61999`, executed with repository-local GenLayer CLI `0.39.1`.
 
-## Deployment
+## Current deployment
+
+- Handback: [`0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79`](https://genlayer-explorer.vercel.app/address/0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79)
+- Deployment: [`0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e`](https://genlayer-explorer.vercel.app/transactions/0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e)
+- Source commit: `2b2f970`
+- Final result: `FINALIZED`, `MAJORITY_AGREE`, five validator votes agreeing
+- Live configuration read: Studionet `61999`, maximum corrections `2`, maximum criteria `5`, maximum sources `5`
+
+This deployment applies the fixed correction budget to both cure and evidence-repair resubmissions. Direct Mode verifies repeated unverifiable evidence reaches the correction limit and then the expiry refund path.
+
+## Historical lifecycle deployment
 
 - Handback: `0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f`
 - Deployment: [`0x0889d7eda4d33349ab3103919641dc9bbc1e258970837a1515682ce551a5115f`](https://genlayer-explorer.vercel.app/transactions/0x0889d7eda4d33349ab3103919641dc9bbc1e258970837a1515682ce551a5115f)
+- Source commit: `cf738e2`
 - Final result: `FINALIZED`, `MAJORITY_AGREE`
+
+The representative lifecycle below was executed against this historical deployment before the bounded-repair update. It remains public evidence of the core judgment and settlement flow; production now points only to the current deployment above.
 
 ## Representative successful lifecycle — commitment #2
 

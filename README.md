@@ -9,7 +9,8 @@ Handback is a Studionet-native milestone escrow for digital work. A client write
 3. The named worker accepts or declines the exact terms.
 4. The worker maps public HTTPS evidence to every criterion.
 5. GenLayer validators independently fetch that evidence and reach an equivalence-based judgment.
-6. Satisfied work becomes payable; unmet work receives a bounded cure; unavailable evidence requests repair. Explicit expiry and mutual-cancellation paths return escrow safely.
+6. Satisfied work becomes payable; unmet work receives a bounded cure; unavailable evidence requests repair. Cure and repair resubmissions share a fixed two-correction limit, after which the final deadline leads to refund.
+7. After funding finalizes, the interface recovers the on-chain commitment ID and opens its `/m/{id}` record. The tracked `/work` route reconstructs agreements for the connected wallet.
 
 Handback deliberately provides no unilateral admin override, proxy upgrade, hidden signer, or private moderation service.
 
@@ -19,8 +20,8 @@ Whether digital work materially satisfies a written requirement is not a formatt
 
 ## Live deployment
 
-- Contract: [`0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f`](https://genlayer-explorer.vercel.app/address/0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f)
-- Deployment transaction: [`0x0889…115f`](https://genlayer-explorer.vercel.app/transactions/0x0889d7eda4d33349ab3103919641dc9bbc1e258970837a1515682ce551a5115f)
+- Contract: [`0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79`](https://genlayer-explorer.vercel.app/address/0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79)
+- Deployment transaction: [`0xd9de…b35e`](https://genlayer-explorer.vercel.app/transactions/0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e)
 - Frontend: `https://handback-milestones.vercel.app`
 
 The production frontend is public and configured with the contract above.
@@ -51,7 +52,7 @@ npm run contract:lint
 npm run build
 ```
 
-`npm run verify` runs the network guard, TypeScript, ESLint, frontend tests, Direct Mode contract tests, and production build. The contract tests use mocked web and LLM behavior inside GenLayer Direct mode. They cover party authorization, evidence completeness, consensus disagreement, cure and repair outcomes, duplicate/replay resistance, expiry, mutual cancellation, and single-use settlement.
+`npm run verify` runs the network guard, TypeScript, ESLint, frontend tests, Direct Mode contract tests, and production build. The contract tests use mocked web and LLM behavior inside GenLayer Direct mode. They cover party authorization, evidence completeness, consensus disagreement, bounded cure and repair outcomes through refund, duplicate/replay resistance, expiry, mutual cancellation, and single-use settlement. Frontend tests cover exact GEN conversion, collision-free criteria, and recovery of a newly funded agreement into its tracked record route.
 
 ## Architecture
 

@@ -14,7 +14,7 @@ The intelligent contract is authoritative for terms, escrow, evidence versions, 
 - HTTPS-only evidence with duplicate prevention and complete criterion coverage.
 - Immutable, incrementing evidence versions and replay-resistant digests.
 - Leader evaluation rerun by validators with stable-field equivalence checks.
-- Separate `UNVERIFIABLE` evidence-repair state instead of treating network failure as failed work.
+- Separate `UNVERIFIABLE` evidence-repair state instead of treating network failure as failed work. Repair and cure resubmissions consume the same fixed two-correction budget, preventing indefinite deadline renewal.
 - Finalized-value transfers only after state is persisted.
 - Terminal-state and version checks prevent repeated settlement.
 - No owner, upgrade key, admin release, or unilateral post-acceptance cancellation.

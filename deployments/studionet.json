@@ -1,14 +1,14 @@
 {
   "contract": "Handback",
-  "address": "0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f",
-  "transaction": "0x0889d7eda4d33349ab3103919641dc9bbc1e258970837a1515682ce551a5115f",
-  "contractExplorer": "https://genlayer-explorer.vercel.app/address/0xC68752F7157C596C84E38620aaB5AE0f6dE0a76f",
-  "transactionExplorer": "https://genlayer-explorer.vercel.app/transactions/0x0889d7eda4d33349ab3103919641dc9bbc1e258970837a1515682ce551a5115f",
+  "address": "0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79",
+  "transaction": "0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e",
+  "contractExplorer": "https://genlayer-explorer.vercel.app/address/0x10b52c8452861bdd4FeDA45f12f2e1A3D0400a79",
+  "transactionExplorer": "https://genlayer-explorer.vercel.app/transactions/0xd9defa1850bcc23a9d7702a71c300adf77bdcadaef3acad58466e3a67546b35e",
   "deployer": "0x7099f2f0d13a9e0c208a9e140f681334cc3d6b89",
   "network": "studionet",
   "chainId": 61999,
   "rpc": "https://studio.genlayer.com/api",
-  "deployedAt": "2026-10-07T23:48:02.507852Z",
-  "sourceCommit": "cf738e2",
+  "deployedAt": "2026-10-09T12:22:07.018350Z",
+  "sourceCommit": "2b2f970",
   "cliVersion": "0.39.1"
 }
