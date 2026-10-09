@@ -1,17 +1,19 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { TransactionRibbon } from "./TransactionRibbon";
 import { useWrite } from "./useWrite";
 import { useWallet } from "./WalletProvider";
-import { nextCriterionId, parseGen } from "@/lib/agreement";
-import type { Criterion } from "@/lib/types";
+import { findCreatedCommitment, nextCriterionId, parseGen } from "@/lib/agreement";
+import { readHandback } from "@/lib/contract";
+import type { Commitment, Criterion } from "@/lib/types";
 
 const toSeconds = (value: string) => Math.floor(new Date(value).getTime() / 1000);
 
 export function AgreementComposer() {
+  const router = useRouter();
   const wallet = useWallet();
-  const tx = useWrite();
   const [worker, setWorker] = useState("");
   const [title, setTitle] = useState("");
   const [brief, setBrief] = useState("");
@@ -20,6 +22,16 @@ export function AgreementComposer() {
   const [deliverBy, setDeliverBy] = useState("");
   const [cureDays, setCureDays] = useState("3");
   const [criteria, setCriteria] = useState<Criterion[]>([{ id: "criterion-1", requirement: "", proof: "" }]);
+  const tx = useWrite(async () => {
+    if (!wallet.account) return;
+    try {
+      const commitments = await readHandback("commitments_for", [wallet.account, 0, 40]) as Commitment[];
+      const created = findCreatedCommitment(commitments, { client: wallet.account, worker, title, brief });
+      router.push(created ? `/m/${created.id}` : "/work");
+    } catch {
+      router.push("/work");
+    }
+  });
 
   async function submit(event: FormEvent) {
     event.preventDefault();

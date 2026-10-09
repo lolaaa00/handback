@@ -20,10 +20,10 @@ def address(value):
     return "0x" + bytes(value).hex()
 
 
-def sources():
+def sources(suffix=""):
     return json.dumps([
-        {"criterion_id": "live", "url": "https://work.example/product", "kind": "WEB_PAGE", "version": "release-1", "sha256": ""},
-        {"criterion_id": "docs", "url": "https://work.example/docs", "kind": "DOCUMENTATION", "version": "release-1", "sha256": ""},
+        {"criterion_id": "live", "url": f"https://work.example/product{suffix}", "kind": "WEB_PAGE", "version": f"release-1{suffix}", "sha256": ""},
+        {"criterion_id": "docs", "url": f"https://work.example/docs{suffix}", "kind": "DOCUMENTATION", "version": f"release-1{suffix}", "sha256": ""},
     ])
 
 
@@ -145,6 +145,30 @@ def test_duplicate_evidence_cannot_consume_a_new_version(direct_vm, direct_deplo
     contract.assess_work(commitment_id)
     with direct_vm.expect_revert("duplicate evidence"):
         contract.present_work(commitment_id, sources())
+
+
+def test_repeated_unverifiable_repairs_are_bounded_then_refundable(direct_vm, direct_deploy, direct_alice, direct_bob):
+    contract, commitment_id = deploy(direct_vm, direct_deploy, direct_alice, direct_bob)
+    accept_and_submit(direct_vm, contract, commitment_id, direct_bob)
+    direct_vm.mock_web(r"work\.example", {"status": 503, "body": "unavailable"})
+    assert contract.assess_work(commitment_id) == "INSUFFICIENT_EVIDENCE"
+
+    for attempt in (1, 2):
+        contract.present_work(commitment_id, sources(f"-repair-{attempt}"))
+        assert contract.assess_work(commitment_id) == "INSUFFICIENT_EVIDENCE"
+
+    item = contract.get_commitment(commitment_id)
+    assert item["state"] == "EVIDENCE_REPAIR"
+    assert item["corrections_used"] == 2
+    with direct_vm.expect_revert("correction limit"):
+        contract.present_work(commitment_id, sources("-repair-3"))
+
+    direct_vm.warp(datetime.fromtimestamp(item["resubmit_by"] + 1, tz=timezone.utc).isoformat())
+    contract.refund_expired(commitment_id)
+    refunded = contract.get_commitment(commitment_id)
+    assert refunded["state"] == "REFUNDED"
+    assert refunded["settled_to"].lower() == address(direct_alice).lower()
+    assert refunded["settled_amount"] == 10**18
 
 
 def test_mutual_cancellation_requires_both_distinct_parties(direct_vm, direct_deploy, direct_alice, direct_bob):

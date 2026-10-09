@@ -303,7 +303,7 @@ class Handback(gl.Contract):
         digest = _hash(sources)
         if digest == item["evidence_digest"]:
             raise gl.vm.UserError("duplicate evidence")
-        if item["state"] == "CURE_REQUIRED":
+        if item["state"] in ("CURE_REQUIRED", "EVIDENCE_REPAIR"):
             if item["corrections_used"] >= MAX_CORRECTIONS:
                 raise gl.vm.UserError("correction limit")
             item["corrections_used"] += 1

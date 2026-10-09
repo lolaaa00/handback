@@ -1,4 +1,4 @@
-import type { Criterion } from "./types";
+import type { Commitment, Criterion } from "./types";
 
 const GEN_DECIMALS = 18;
 
@@ -16,4 +16,18 @@ export function nextCriterionId(criteria: Criterion[]) {
     return match ? Math.max(maximum, Number(match[1])) : maximum;
   }, 0);
   return `criterion-${highest + 1}`;
+}
+
+export function findCreatedCommitment(
+  commitments: Commitment[],
+  draft: { client: string; worker: string; title: string; brief: string },
+) {
+  const client = draft.client.toLowerCase();
+  const worker = draft.worker.toLowerCase();
+  return commitments
+    .filter(item => item.client.toLowerCase() === client
+      && item.worker.toLowerCase() === worker
+      && item.title === draft.title.trim()
+      && item.brief === draft.brief.trim())
+    .sort((left, right) => right.id - left.id)[0];
 }
